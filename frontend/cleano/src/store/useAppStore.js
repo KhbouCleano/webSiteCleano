@@ -5,13 +5,14 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { addToCart, removeFromCart, updateQty } from "../models/Cart";
+
 // Map page → URL
 const PAGE_URLS = {
   home:      "/",
   products:  "/products",
   detail:    "/product",   // + /:id
   cart:      "/cart",
-  checkout:  "/checkout",
+  checkout:  "/checkout",  // ✅ Assurez-vous que c'est bien présent
   track:     "/track",
   favorites: "/favorites",
   about:     "/about",
@@ -23,30 +24,39 @@ const URL_PAGES = {
   "/":           "home",
   "/products":   "products",
   "/cart":       "cart",
-  "/checkout":   "checkout",
+  "/checkout":   "checkout",  // ✅ Ajoutez cette ligne
   "/track":      "track",
   "/favorites":  "favorites",
   "/about":      "about",
   "/contact":    "contact",
 };
+
 const useAppStore = create(
   persist(
     (set) => ({
       // ── Navigation ────────────────────────────────────────
-        page: "home",
-        selectedProductId: null,
+      page: "home",
+      selectedProductId: null,
 
-        navigate: (page, productId = null) => {
-          set({ page, selectedProductId: productId });
-          // Change l'URL dans le navigateur
-          const url = PAGE_URLS[page] ?? "/";
-          const fullUrl = page === "detail" && productId ? `${url}/${productId}` : url;
-          window.history.pushState({}, "", fullUrl);
-        },
-        setPageFromUrl: (pathname) => {
-          const page = URL_PAGES[pathname] ?? "home";
-          set({ page });
-        },
+      navigate: (page, productId = null) => {
+        set({ page, selectedProductId: productId });
+        // Change l'URL dans le navigateur
+        const url = PAGE_URLS[page] ?? "/";
+        const fullUrl = page === "detail" && productId ? `${url}/${productId}` : url;
+        window.history.pushState({}, "", fullUrl);
+      },
+
+      setPageFromUrl: (pathname) => {
+        // Gestion spéciale pour /product/:id
+        if (pathname.startsWith("/product/")) {
+          const id = pathname.split("/")[2];
+          set({ page: "detail", selectedProductId: id });
+          return;
+        }
+        const page = URL_PAGES[pathname] ?? "home";
+        set({ page });
+      },
+
       // ── Auth ─────────────────────────────────────────────
       user: null,
       authModal: false,
@@ -92,7 +102,6 @@ const useAppStore = create(
     }),
     {
       name: "cleano-store",
-      // "partialize" est le bon nom dans Zustand v4+ (pas partialState)
       partialize: (state) => ({
         cartItems: state.cartItems,
         favorites: state.favorites,
