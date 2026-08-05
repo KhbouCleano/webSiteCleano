@@ -59,6 +59,41 @@ const Input = ({ label, type = "text", value, onChange, placeholder, icon }) => 
   </div>
 );
 
+// Sélecteur de type de compte : Particulier / Professionnel (grossiste)
+const AccountTypeSwitch = ({ value, onChange }) => (
+  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+    <label style={{ fontSize: 11, fontWeight: 700, color: C.muted, fontFamily: FONT, letterSpacing: ".08em", textTransform: "uppercase" }}>
+      Type de compte
+    </label>
+    <div style={{
+      display: "flex", gap: 8,
+    }}>
+      {[
+        { key: "particulier", label: "Particulier" },
+        { key: "grossiste", label: "Professionnel / Grossiste" },
+      ].map(({ key, label }) => (
+        <button
+          key={key}
+          type="button"
+          onClick={() => onChange(key)}
+          style={{
+            flex: 1,
+            padding: "10px 8px",
+            borderRadius: 10,
+            border: `1.5px solid ${value === key ? C.magenta : C.lavender}`,
+            background: value === key ? `${C.magenta}0D` : C.offwhite,
+            color: value === key ? C.magenta : C.muted,
+            fontFamily: FONT, fontSize: 12.5, fontWeight: 700,
+            cursor: "pointer", transition: "all .2s",
+          }}
+        >
+          {label}
+        </button>
+      ))}
+    </div>
+  </div>
+);
+
 const AuthModal = () => {
   const { authModal, authTab, closeAuthModal, handleLogin, handleRegister,
           loading, error, setError } = useAuthController();
@@ -69,14 +104,29 @@ const AuthModal = () => {
   const [name, setName]         = useState("");
   const [showPass, setShowPass] = useState(false);
 
+  // Nouveaux champs liés au type de compte
+  const [accountType, setAccountType]     = useState("particulier"); // "particulier" | "grossiste"
+  const [companyName, setCompanyName]     = useState("");
+  const [estimatedVolume, setEstimatedVolume] = useState("");
+
   if (!authModal) return null;
 
-  const reset = () => { setEmail(""); setPassword(""); setName(""); setError(""); };
+  const reset = () => {
+    setEmail(""); setPassword(""); setName(""); setError("");
+    setAccountType("particulier"); setCompanyName(""); setEstimatedVolume("");
+  };
 
   const submit = async (e) => {
     e.preventDefault();
-    if (authTab === "login") await handleLogin(email, password);
-    else                      await handleRegister(email, password, name);
+    if (authTab === "login") {
+      await handleLogin(email, password);
+    } else {
+      // On transmet le type de compte + les infos pro si "grossiste"
+      await handleRegister(email, password, name, {
+        accountType,
+        ...(accountType === "grossiste" ? { companyName, estimatedVolume } : {}),
+      });
+    }
   };
 
   return (
@@ -97,6 +147,8 @@ const AuthModal = () => {
         overflow: "hidden",
         boxShadow: "0 24px 64px rgba(27,37,89,0.18), 0 4px 16px rgba(0,0,0,0.08)",
         animation: "scaleIn .25s ease both",
+        maxHeight: "90vh",
+        overflowY: "auto",
       }}>
 
         {/* Bandeau dégradé haut */}
@@ -106,11 +158,9 @@ const AuthModal = () => {
           position: "relative",
           overflow: "hidden",
         }}>
-          {/* Décos */}
           <div style={{ position: "absolute", top: -30, right: -30, width: 120, height: 120, borderRadius: "50%", background: "rgba(255,255,255,0.06)", pointerEvents: "none" }} />
           <div style={{ position: "absolute", bottom: -20, left: 60, width: 80, height: 80, borderRadius: "50%", background: "rgba(255,255,255,0.04)", pointerEvents: "none" }} />
 
-          {/* Logo Cleano */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
             <div>
              <div style={{ marginBottom: 14 }}>
@@ -139,7 +189,6 @@ const AuthModal = () => {
               </p>
             </div>
 
-            {/* Bouton fermer */}
             <button onClick={closeAuthModal} style={{
               width: 34, height: 34, borderRadius: 10, flexShrink: 0,
               background: "rgba(255,255,255,0.15)",
@@ -185,18 +234,54 @@ const AuthModal = () => {
           <form onSubmit={submit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
 
             {authTab === "register" && (
-              <Input
-                label="Nom complet"
-                value={name}
-                onChange={setName}
-                placeholder="Jean Dupont"
-                icon={
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                    <circle cx="12" cy="7" r="4"/>
-                  </svg>
-                }
-              />
+              <>
+                <AccountTypeSwitch value={accountType} onChange={setAccountType} />
+
+                <Input
+                  label="Nom complet"
+                  value={name}
+                  onChange={setName}
+                  placeholder="Jean Dupont"
+                  icon={
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                      <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                  }
+                />
+
+                {/* Champs additionnels réservés au compte professionnel / grossiste */}
+                {accountType === "grossiste" && (
+                  <>
+                    <Input
+                      label="Nom de l'entreprise"
+                      value={companyName}
+                      onChange={setCompanyName}
+                      placeholder="Ex : Cleano Distribution SARL"
+                      icon={
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                          <path d="M3 21h18"/>
+                          <path d="M5 21V7l8-4v18"/>
+                          <path d="M19 21V11l-6-4"/>
+                        </svg>
+                      }
+                    />
+                    <Input
+                      label="Volume d'achat estimé (par mois)"
+                      value={estimatedVolume}
+                      onChange={setEstimatedVolume}
+                      placeholder="Ex : 500 unités / mois"
+                      icon={
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                          <path d="M21 8V21H3V8"/>
+                          <path d="M1 3h22v5H1z"/>
+                          <path d="M10 12h4"/>
+                        </svg>
+                      }
+                    />
+                  </>
+                )}
+              </>
             )}
 
             <Input
@@ -267,7 +352,6 @@ const AuthModal = () => {
               </div>
             </div>
 
-            {/* Lien mot de passe oublié */}
             {authTab === "login" && (
               <div style={{ textAlign: "right", marginTop: -8 }}>
                 <button type="button" style={{
@@ -279,7 +363,6 @@ const AuthModal = () => {
               </div>
             )}
 
-            {/* Erreur */}
             {error && (
               <div style={{
                 display: "flex", alignItems: "center", gap: 10,
@@ -298,7 +381,6 @@ const AuthModal = () => {
               </div>
             )}
 
-            {/* Bouton submit */}
             <button
               type="submit"
               disabled={loading}
@@ -347,14 +429,12 @@ const AuthModal = () => {
               )}
             </button>
 
-            {/* Séparateur */}
             <div style={{ display: "flex", alignItems: "center", gap: 12, margin: "4px 0" }}>
               <div style={{ flex: 1, height: 1, background: C.lavender }} />
               <span style={{ fontSize: 12, color: C.muted, fontFamily: FONT }}>ou</span>
               <div style={{ flex: 1, height: 1, background: C.lavender }} />
             </div>
 
-            {/* Lien switcher */}
             <p style={{ textAlign: "center", fontSize: 13, color: C.muted, fontFamily: FONT, margin: 0 }}>
               {authTab === "login" ? "Pas encore de compte ? " : "Déjà un compte ? "}
               <button

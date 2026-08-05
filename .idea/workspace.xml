@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e70d966f-6d84-45ac-b7c1-55aeae43dc8d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/import_adex_to_orders.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/adex.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/colis.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/stock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/sync_adex.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/track.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/test-adex-addcolis.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/test-adex-csrf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/test-adex-debug.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/test-adex-final.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/test-adex.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/public/11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/public/12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/public/13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/public/aze.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/public/cart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/public/moto.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/public/tunisia-governorates.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/public/voiture3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/public/voiture4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/admin/adminRoutes.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/admin/components/AdminLayout.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/admin/components/AdminModal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/admin/components/AdminTable.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/admin/components/SyncAdexButton.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/admin/pages/AdminDashboard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/admin/pages/AdminGouvernorats.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/admin/pages/AdminLoginPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/admin/pages/ClientsPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/admin/pages/ColisPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/admin/pages/CommandesPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/admin/pages/HistoriquePage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/admin/pages/ProduitsPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/admin/pages/StockHistoriquePage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/admin/pages/StockPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/controllers/gouvernoratsStore.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/data/gouvernoratsStore.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/views/pages/MapPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/views/pages/MotoTracker_map.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/views/pages/ProfilePage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/cleano/src/views/pages/TunisiaMap.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/db.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/authController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/userController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/middleware/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middleware/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Category.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Favorite.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Favorite.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Order.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Product.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/helmet/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/helmet/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/helmet/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/helmet/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/helmet/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/helmet/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/helmet/SECURITY.md" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/helmet/SECURITY.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/helmet/index.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/helmet/index.cjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/helmet/index.d.cts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/helmet/index.d.cts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/helmet/index.d.mts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/helmet/index.d.mts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/helmet/index.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/helmet/index.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/helmet/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/helmet/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/morgan/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/morgan/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/morgan/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/morgan/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/morgan/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/morgan/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/morgan/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/morgan/node_modules/on-finished/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/morgan/node_modules/on-finished/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/morgan/node_modules/on-finished/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/morgan/node_modules/on-finished/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/morgan/node_modules/on-finished/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/morgan/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/morgan/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/dist/empty.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/dist/empty.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/dist/empty.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/dist/empty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/dist/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/dist/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/dist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/dist/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/dist/index.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/esm/index.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/esm/index.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/src/empty.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/src/empty.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/src/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-cloudflare/src/types.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-connection-string/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-connection-string/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-connection-string/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-connection-string/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-connection-string/esm/index.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-connection-string/esm/index.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-connection-string/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-connection-string/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-connection-string/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-connection-string/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-connection-string/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-connection-string/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-pool/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-pool/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-pool/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-pool/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-pool/esm/index.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-pool/esm/index.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-pool/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-pool/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-pool/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-pool/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/b.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/b.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/b.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/b.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/b.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/b.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/buffer-reader.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/buffer-reader.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/buffer-reader.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/buffer-reader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/buffer-reader.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/buffer-reader.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/buffer-writer.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/buffer-writer.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/buffer-writer.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/buffer-writer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/buffer-writer.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/buffer-writer.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/inbound-parser.test.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/inbound-parser.test.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/inbound-parser.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/inbound-parser.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/inbound-parser.test.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/inbound-parser.test.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/index.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/messages.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/messages.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/messages.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/messages.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/outbound-serializer.test.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/outbound-serializer.test.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/outbound-serializer.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/outbound-serializer.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/outbound-serializer.test.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/outbound-serializer.test.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/parser.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/parser.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/parser.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/parser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/parser.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/parser.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/serializer.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/serializer.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/serializer.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/serializer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/serializer.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/dist/serializer.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/esm/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/esm/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/b.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/b.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/buffer-reader.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/buffer-reader.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/buffer-writer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/buffer-writer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/inbound-parser.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/inbound-parser.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/messages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/messages.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/outbound-serializer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/outbound-serializer.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/parser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/parser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/serializer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/serializer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/testing/buffer-list.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/testing/buffer-list.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/testing/test-buffers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/testing/test-buffers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/types/chunky.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg-protocol/src/types/chunky.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/esm/index.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/esm/index.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/lib/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/lib/client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/lib/connection-parameters.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/lib/connection-parameters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/lib/connection.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/lib/connection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/lib/crypto/cert-signatures.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/lib/crypto/cert-signatures.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/lib/crypto/sasl.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/lib/crypto/sasl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/lib/crypto/utils-legacy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/lib/crypto/utils-webcrypto.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/lib/crypto/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/lib/crypto/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/lib/defaults.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/lib/defaults.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/lib/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/lib/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/lib/native/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/lib/native/client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/lib/native/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/lib/native/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/lib/native/query.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/lib/native/query.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/lib/query.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/lib/query.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/lib/result.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/lib/result.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/lib/stream.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/lib/stream.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/lib/type-overrides.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/lib/type-overrides.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/lib/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/lib/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/node_modules/pg/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/pg/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/categories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/orders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/products.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/cleano/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/cleano/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/cleano/src/controllers/useAuthController.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/cleano/src/controllers/useAuthController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/cleano/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/cleano/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/cleano/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/cleano/src/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/cleano/src/router/AppRouter.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/cleano/src/router/AppRouter.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/cleano/src/store/useAppStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/cleano/src/store/useAppStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/cleano/src/views/components/auth/AuthModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/cleano/src/views/components/auth/AuthModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/cleano/src/views/components/shared/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/cleano/src/views/components/shared/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/cleano/src/views/pages/AboutPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/cleano/src/views/pages/AboutPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/cleano/src/views/pages/CheckoutPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/cleano/src/views/pages/CheckoutPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/cleano/src/views/pages/ContactPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/cleano/src/views/pages/ContactPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/cleano/src/views/pages/DetailPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/cleano/src/views/pages/DetailPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/cleano/src/views/pages/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/cleano/src/views/pages/HomePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/cleano/src/views/pages/ProductsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/cleano/src/views/pages/ProductsPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/cleano/src/views/pages/TrackPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/cleano/src/views/pages/TrackPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/cleano/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/cleano/vite.config.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;KhbouCleano&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/KhbouCleano/webSiteCleano.git&quot;,
+    &quot;accountId&quot;: &quot;e8d62342-2328-4be3-b0d7-0b1057ff7b7e&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="3C2NLzxTG7iWfnao7pdqpMnhrQ1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "backend",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/khbou clean/Downloads/files/backend/routes",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\khbou clean\Downloads\files\backend\routes" />
+      <recent name="C:\Users\khbou clean\Downloads\files\frontend\cleano\src\data" />
+      <recent name="C:\Users\khbou clean\Downloads\files\frontend\cleano\src\admin\components" />
+      <recent name="C:\Users\khbou clean\Downloads\files\backend" />
+      <recent name="C:\Users\khbou clean\Downloads\files\frontend\cleano\src\admin\pages" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\khbou clean\Downloads\files\frontend\cleano\src\controllers" />
+      <recent name="C:\Users\khbou clean\Downloads\files\frontend\cleano\src\admin" />
+      <recent name="C:\Users\khbou clean\Downloads\files\frontend\cleano\src\admin\components" />
+      <recent name="C:\Users\khbou clean\Downloads\files\frontend\cleano\src\client" />
+      <recent name="C:\Users\khbou clean\Downloads\files\frontend\cleano\public" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e70d966f-6d84-45ac-b7c1-55aeae43dc8d" name="Changes" comment="" />
+      <created>1775579657719</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1775579657719</updated>
+      <workItem from="1775579657967" duration="30000" />
+    </task>
+    <servers />
+  </component>
+</project>

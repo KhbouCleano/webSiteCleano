@@ -1,13 +1,35 @@
-// routes/categories.js
-const express = require('express');
-const router  = express.Router();
-const categoryController = require('../controllers/categoryController');
-const { authenticate, requireRole } = require('../middleware/auth');
+﻿'use strict';
+// backend/routes/categories.js
 
-const isAdmin = [authenticate, requireRole('admin', 'sous_admin')];
+const express   = require('express');
+const router    = express.Router();
+const sequelize = require('../config/database');
+const { QueryTypes } = require('sequelize');
 
-router.get('/',       categoryController.index);
-router.get('/:slug',  categoryController.show);
-router.post('/',  ...isAdmin, categoryController.create);
+// GET /api/categories
+router.get('/', async (req, res) => {
+  try {
+    const categories = await sequelize.query(
+      'SELECT * FROM categories ORDER BY id ASC',
+      { type: QueryTypes.SELECT }
+    );
+    res.json({ categories, total: categories.length });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// POST /api/categories
+router.post('/', async (req, res) => {
+  try {
+    const [result] = await sequelize.query(
+      `INSERT INTO categories (label) VALUES (:label) RETURNING *`,
+      { replacements: { label: req.body.label }, type: QueryTypes.INSERT }
+    );
+    res.status(201).json(Array.isArray(result) ? result[0] : result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 module.exports = router;

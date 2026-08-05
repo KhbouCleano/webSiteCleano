@@ -1,9 +1,3 @@
-// server.js — cleano.tn
-// ============================================================
-// Point d'entrée principal
-// Charge Sequelize, définit les associations, puis démarre
-// Express avec toutes les routes.
-// ============================================================
 'use strict';
 
 require('dotenv').config();
@@ -13,118 +7,110 @@ const cors        = require('cors');
 const helmet      = require('helmet');
 const morgan      = require('morgan');
 const compression = require('compression');
-const rateLimit   = require('express-rate-limit');
-const path        = require('path');
+const os          = require('os');
 
-// ── 1. Charger Sequelize + définir TOUTES les associations ──
-const sequelize                = require('./config/database');
-const { defineAssociations }   = require('./models/associations');
+const sequelize              = require('./config/database');
+const { defineAssociations } = require('./models/associations');
 defineAssociations();
 
-// ── 2. App Express ──────────────────────────────────────────
 const app  = express();
 const PORT = process.env.PORT || 3000;
 
-// ── Sécurité ────────────────────────────────────────────────
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(compression());
-
-// ── Logs ────────────────────────────────────────────────────
-if (process.env.NODE_ENV !== 'test') {
-  app.use(morgan('dev'));
-}
-
-// ── CORS ────────────────────────────────────────────────────
+app.use(morgan('dev'));
 app.use(cors({
   origin: [
+    'http://localhost:5173',
     'http://localhost:3000',
-    'http://localhost:5000',
-    'http://localhost:5500',
-    'http://127.0.0.1:5500',
-    'http://127.0.0.1:5000',
+    'http://192.168.1.155:5173',
+    'http://192.168.1.158:5173',
     process.env.FRONTEND_URL,
   ].filter(Boolean),
-  credentials:    true,
-  methods:        ['GET','POST','PUT','PATCH','DELETE','OPTIONS'],
-  allowedHeaders: ['Content-Type','Authorization'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+app.use(express.json({ limit: '50mb' }));        // ← 50mb pour les images base64
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
-// ── Body parsers ─────────────────────────────────────────────
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+// ══════════════════════════════════════════════════════════════
+// 🔍 DIAGNOSTIC RÉSEAU TEMPORAIRE
+// Log CHAQUE requête reçue avec l'IP/port du serveur qui répond.
+// Sert à savoir si CE processus est bien celui qui reçoit les
+// appels du front, ou si un autre serveur/process répond à sa place.
+// ⚠️ À retirer une fois le problème d'IP/serveur résolu.
+// ══════════════════════════════════════════════════════════════
+app.use((req, res, next) => {
+  console.log(`📥 [PID ${process.pid}] ${req.method} ${req.originalUrl}  ←  from ${req.ip}`);
+  next();
+});
 
-// ── Fichiers statiques ───────────────────────────────────────
-app.use('/images',  express.static(path.join(__dirname, '..', 'frontend', 'images')));
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// GET /api/whoami — ouvre cette URL depuis chaque IP candidate
+// (http://192.168.1.155:3000/api/whoami puis .158) pour voir
+// quel processus répond réellement derrière chaque adresse.
+app.get('/api/whoami', (req, res) => {
+  const nets = os.networkInterfaces();
+  const addresses = [];
+  for (const name of Object.keys(nets)) {
+    for (const net of nets[name]) {
+      if (net.family === 'IPv4' && !net.internal) addresses.push({ interface: name, address: net.address });
+    }
+  }
+  res.json({
+    pid: process.pid,
+    port: PORT,
+    hostname: os.hostname(),
+    interfaces_reseau: addresses,
+    started_at: new Date(process.uptime() * -1000 + Date.now()).toISOString(),
+    uptime_secondes: Math.round(process.uptime()),
+    node_env: process.env.NODE_ENV || 'non défini',
+    cwd: process.cwd(),
+  });
+});
 
-// ── Rate Limiting ────────────────────────────────────────────
-app.use('/api/', rateLimit({
-  windowMs: 15 * 60 * 1000, max: 200,
-  standardHeaders: true, legacyHeaders: false,
-  message: { error: 'Trop de requêtes. Réessayez dans quelques minutes.' },
-}));
-app.use('/api/auth/login',    rateLimit({ windowMs: 15 * 60 * 1000, max: 10, message: { error: 'Trop de tentatives.' } }));
-app.use('/api/auth/register', rateLimit({ windowMs: 15 * 60 * 1000, max: 10, message: { error: 'Trop de tentatives.' } }));
-
-// ── Routes API ───────────────────────────────────────────────
+// ── Routes ───────────────────────────────────────────────────
 app.use('/api/auth',       require('./routes/auth'));
 app.use('/api/products',   require('./routes/products'));
+app.use('/api/stock',      require('./routes/stock'));   // ← AJOUTER CETTE LIGNE
 app.use('/api/categories', require('./routes/categories'));
 app.use('/api/orders',     require('./routes/orders'));
 app.use('/api/users',      require('./routes/users'));
 app.use('/api/cart',       require('./routes/cart'));
 app.use('/api/admin',      require('./routes/admin'));
+app.use('/api/track',      require('./routes/track'));
+app.use('/api/colis',      require('./routes/colis'));
+app.use('/api/adex',       require('./routes/adex'));
 
 // ── Health check ──────────────────────────────────────────────
 app.get('/api/health', async (req, res) => {
   try {
     await sequelize.authenticate();
-    res.json({ status: 'ok', db: 'connected', orm: 'sequelize', version: '1.0.0' });
+    res.json({ status: 'ok', db: 'connected' });
   } catch {
     res.status(503).json({ status: 'error', db: 'disconnected' });
   }
 });
 
-// ── Frontend SPA ──────────────────────────────────────────────
-const frontendPath = path.join(__dirname, '..', 'frontend');
-app.use(express.static(frontendPath));
-// Express 5 : utiliser /{*path} au lieu de '*'
-app.get('/{*path}', (req, res) => {
-  if (!req.path.startsWith('/api')) {
-    res.sendFile(path.join(frontendPath, 'index.html'));
-  } else {
-    res.status(404).json({ error: 'Route API introuvable.' });
-  }
-});
-
-// ── Gestion d'erreurs globale ─────────────────────────────────
+// ── Error handler ─────────────────────────────────────────────
 app.use((err, req, res, next) => {
   console.error('❌', err.message);
-  res.status(err.status || 500).json({
-    error: err.message || 'Erreur serveur interne.',
-    ...(process.env.NODE_ENV === 'development' && { stack: err.stack }),
-  });
+  res.status(err.status || 500).json({ error: err.message || 'Erreur serveur.' });
 });
 
-// ── 3. Synchroniser Sequelize, puis démarrer ─────────────────
-// sync({ alter: true }) met à jour les tables sans les supprimer
-// En production utiliser les migrations Sequelize CLI
+// ── Start — authenticate() seulement, pas de sync ────────────
 sequelize
-  .sync({ alter: process.env.NODE_ENV === 'development' })
+  .authenticate()
   .then(() => {
-    app.listen(PORT, () => {
-      console.log(`
-╔══════════════════════════════════════════════╗
-║  🧹  cleano.tn API  v1.0                    ║
-║  http://localhost:${PORT}                       ║
-║  ORM     : Sequelize + PostgreSQL           ║
-║  Env     : ${(process.env.NODE_ENV || 'development').padEnd(32)}║
-╚══════════════════════════════════════════════╝
-      `);
+    console.log('✅ Base de données connectée');
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`✅ Cleano API — http://localhost:${PORT}`);
+      console.log(`✅ Réseau local — http://192.168.1.155:${PORT}`);
+      console.log(`🔍 Diagnostic — ouvre http://192.168.1.158:${PORT}/api/whoami et http://192.168.1.155:${PORT}/api/whoami`);
     });
   })
   .catch(err => {
-    console.error('❌ Impossible de se connecter à la base de données :', err.message);
+    console.error('❌ DB Error:', err.message);
     process.exit(1);
   });
 

@@ -1,0 +1,32 @@
+{
+  "name": "files",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000w\u0000e\u0000b\u0000S\u0000i\u0000t\u0000e\u0000C\u0000l\u0000e\u0000a\u0000n\u0000o\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KhbouCleano/webSiteCleano.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KhbouCleano/webSiteCleano/issues"
+  },
+  "homepage": "https://github.com/KhbouCleano/webSiteCleano#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.2",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.22.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

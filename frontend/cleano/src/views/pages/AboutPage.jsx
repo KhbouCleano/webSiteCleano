@@ -579,12 +579,12 @@ const AboutPage = () => {
       </div>
       {/* ── NOTRE VÉHICULE ── */}
 {/* ── NOTRE FLOTTE ── */}
+{/* ── NOTRE FLOTTE ── */}
 <div style={{
-//   background: `linear-gradient(135deg, #6B21A8 0%, #7C3AED 40%, ${C.magenta} 100%)`,
   padding: "0",
   position: "relative",
   overflow: "hidden",
-  minHeight: 520,
+  minHeight: "auto",
 }}>
   {/* Décos bulles fond */}
   <div style={{ position: "absolute", top: 40, left: "20%", width: 120, height: 120, borderRadius: "50%", background: "rgba(255,255,255,0.06)", pointerEvents: "none" }} />
@@ -595,191 +595,199 @@ const AboutPage = () => {
   <div style={{
     maxWidth: 1200,
     margin: "0 auto",
-    display: "grid",
-    gridTemplateColumns: "1fr 1.6fr",
-    alignItems: "center",
-    minHeight: 520,
+    display: "flex",
+    flexDirection: "column",
     position: "relative",
     zIndex: 1,
   }}>
 
-    {/* ── GAUCHE : livreur + texte ── */}
-    <div style={{
-      padding: "52px 32px 52px 48px",
+    {/* ── Layout principal : colonne sur mobile, grille sur desktop ── */}
+   <style>{`
+     @media (min-width: 768px) {
+       .flotte-grid {
+         display: grid !important;
+         grid-template-columns: 1fr 1.6fr !important;
+         align-items: center !important;
+         min-height: 600px !important;
+       }
+       .flotte-vehicles {
+         position: relative !important;
+         height: 600px !important;
+         min-height: 600px !important;
+       }
+       .vehicle1 {
+         position: absolute !important;
+         top: -10% !important;
+         right: 2% !important;
+         width: 100% !important;
+       }
+       .vehicle2 {
+         position: absolute !important;
+         top: 35% !important;
+         right: 30% !important;
+         width: 100% !important;
+       }
+       .vehicle3 {
+         position: absolute !important;
+         top: 27% !important;
+         left: 21% !important;
+         width: 120% !important;
+         z-index: 3 !important;
+       }
+     }
+
+     @media (max-width: 767px) {
+       .vehicle1 img,
+       .vehicle2 img,
+       .vehicle3 img {
+         width: 100% !important;
+         min-width: 320px !important;
+       }
+       .vehicle1,
+       .vehicle2,
+       .vehicle3 {
+         width: 100% !important;
+       }
+     }
+   `}</style>
+
+    <div className="flotte-grid" style={{
       display: "flex",
       flexDirection: "column",
-      gap: 24,
-      position: "relative",
     }}>
 
-      {/* Bulle "Questions ???" */}
+      {/* ── GAUCHE : livreur + texte ── */}
       <div style={{
-        position: "absolute",
-        top: 36, right: 20,
-        background: "rgba(255,255,255,0.18)",
-        backdropFilter: "blur(12px)",
-        border: "1.5px solid rgba(255,255,255,0.3)",
-        borderRadius: "50% 50% 50% 10%",
-        padding: "12px 20px",
-        zIndex: 3,
+        padding: "40px 24px 24px",
+        display: "flex",
+        flexDirection: "column",
+        gap: 20,
+        position: "relative",
       }}>
-        <p style={{ fontSize: 15, fontWeight: 800, color: "#fff", fontFamily: FONT, margin: 0, textAlign: "center" }}>
-          Questions<br />???
-        </p>
+
+
+
+        {/* Image livreur */}
+        <div style={{ position: "relative" }}>
+          <img
+            src="/livreur.png"
+            alt="Livreur Cleano"
+            style={{
+              width: "100%",
+              maxWidth: 320,
+              height: "auto",
+              objectFit: "contain",
+              filter: "drop-shadow(0 12px 32px rgba(0,0,0,0.25))",
+              display: "block",
+            }}
+            onError={e => { e.currentTarget.style.display = "none"; }}
+          />
+        </div>
+
+        {/* Texte + infos contact */}
+        <div>
+          <p style={{ fontSize: 11, fontWeight: 700, color: C.magenta, letterSpacing: ".14em", textTransform: "uppercase", fontFamily: FONT, margin: "0 0 8px" }}>
+            Notre flotte
+          </p>
+          <h2 style={{ fontFamily: FONT, fontSize: "clamp(22px, 3vw, 32px)", fontWeight: 900, color: C.navy, margin: "0 0 12px", lineHeight: 1.2 }}>
+            Livraison directe<br />
+            <span style={{ color: C.magenta }}>chez vous</span>
+          </h2>
+          <p style={{ fontSize: 13, color: C.navy, fontFamily: FONT, margin: "0 0 20px", lineHeight: 1.7, opacity: 0.75 }}>
+            Nos véhicules floqués Cleano sillonnent Hammam Sousse et ses environs pour vous livrer rapidement.
+          </p>
+
+          {/* Infos contact */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            {[
+              { d: "M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.92 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.99 5.99l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z", text: "(+216) 54 707 406   ·  (+216) 55 777 400", accent: true },
+              { d: "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 10m-3 0a3 3 0 1 0 6 0 3 3 0 0 0-6 0", text: "Hammam Sousse — Tunisie", accent: false },
+              { d: "M1 6h1m1 0h14M1 6v12a2 2 0 002 2h14a2 2 0 002-2V6M1 6l2-3h14l2 3", text: "Livraison 24 à 48h", accent: false },
+            ].map(({ d, text, accent }) => (
+              <div key={text} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <div style={{
+                  width: 32, height: 32, borderRadius: 8, flexShrink: 0,
+                  background: accent ? `${C.magenta}18` : `${C.navy}10`,
+                  border: `1.5px solid ${accent ? C.magenta : C.navy}30`,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                    stroke={accent ? C.magenta : C.navy}
+                    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d={d}/>
+                  </svg>
+                </div>
+                <span style={{
+                  fontSize: 12,
+                  color: accent ? C.magenta : C.navy,
+                  fontFamily: FONT,
+                  fontWeight: 700,
+                }}>
+                  {text}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
-      {/* Image livreur */}
-      <div style={{ position: "relative" }}>
-        <img
-          src="/livreur.png"
-          alt="Livreur Cleano"
-          style={{
-            width: "100%",
-            maxWidth: 320,
-            height: "auto",
-            objectFit: "contain",
-            filter: "drop-shadow(0 12px 32px rgba(0,0,0,0.25))",
-            display: "block",
-          }}
-          onError={e => { e.currentTarget.style.display = "none"; }}
-        />
-      </div>
+      {/* ── DROITE / BAS : deux véhicules ── */}
+   {/* ── DROITE / BAS : trois véhicules ── */}
+   <div className="flotte-vehicles" style={{
+     position: "relative",
+     display: "flex",
+     flexDirection: "column",
+     gap: 16,
+     padding: "0 16px 32px",
+     alignItems: "center",
+   }}>
 
-      {/* Texte + infos contact */}
-     {/* Texte + infos contact */}
-     <div>
-       <p style={{ fontSize: 11, fontWeight: 700, color: C.magenta, letterSpacing: ".14em", textTransform: "uppercase", fontFamily: FONT, margin: "0 0 8px" }}>
-         Notre flotte
-       </p>
-       <h2 style={{ fontFamily: FONT, fontSize: "clamp(22px, 3vw, 32px)", fontWeight: 900, color: C.navy, margin: "0 0 12px", lineHeight: 1.2 }}>
-         Livraison directe<br />
-         <span style={{ color: C.magenta }}>chez vous</span>
-       </h2>
-       <p style={{ fontSize: 13, color: C.navy, fontFamily: FONT, margin: "0 0 20px", lineHeight: 1.7, opacity: 0.75 }}>
-         Nos véhicules floqués Cleano sillonnent Hammam Sousse et ses environs pour vous livrer rapidement.
-       </p>
-
-       {/* Infos contact */}
-       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-         {[
-           { d: "M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.92 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.99 5.99l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z", text: "(+216) 54 444 428  ·  (+216) 55 777 400", accent: true },
-           { d: "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 10m-3 0a3 3 0 1 0 6 0 3 3 0 0 0-6 0", text: "Hammam Sousse — Tunisie", accent: false },
-           { d: "M1 6h1m1 0h14M1 6v12a2 2 0 002 2h14a2 2 0 002-2V6M1 6l2-3h14l2 3", text: "Livraison 24 à 48h", accent: false },
-         ].map(({ d, text, accent }) => (
-           <div key={text} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-             <div style={{
-               width: 32, height: 32, borderRadius: 8, flexShrink: 0,
-               background: accent ? `${C.magenta}18` : `${C.navy}10`,
-               border: `1.5px solid ${accent ? C.magenta : C.navy}30`,
-               display: "flex", alignItems: "center", justifyContent: "center",
-             }}>
-               <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                 stroke={accent ? C.magenta : C.navy}
-                 strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                 <path d={d}/>
-               </svg>
-             </div>
-             <span style={{
-               fontSize: 12,
-               color: accent ? C.magenta : C.navy,
-               fontFamily: FONT,
-               fontWeight: 700,
-             }}>
-               {text}
-             </span>
-           </div>
-         ))}
-       </div>
+     {/* Véhicule 1 — Toyota HiAce */}
+     <div className="vehicle1" style={{ width: "100%", zIndex: 1, }}>
+       <img
+         src="/11.png"
+         alt="Toyota HiAce Cleano"
+         style={{
+           width: "100%",
+           height: "auto",
+           objectFit: "contain",
+//            filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.28))",
+         }}
+       />
      </div>
-    </div>
 
-    {/* ── DROITE : deux véhicules superposés ── */}
-    <div style={{
-      position: "relative",
-      height: "100%",
-      minHeight: 520,
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "flex-end",
-      paddingRight: 32,
-      gap: 0,
-    }}>
+     {/* Véhicule 2 — Fiat Ducato */}
+     <div className="vehicle2" style={{ width: "100%", zIndex: 2 }}>
+       <img
+         src="/12.png"
+         alt="Fiat Ducato Cleano"
+         style={{
+           width: "100%",
+           height: "auto",
+           objectFit: "contain",
+           filter: "drop-shadow(0 12px 32px rgba(0,0,0,0.35))",
+         }}
+       />
+     </div>
 
-      {/* Véhicule 1 — arrière-plan (plus petit, décalé) */}
-      <div style={{
-        position: "absolute",
-        top: "4%",
-        right: "2%",
-        width: "88%",
-        zIndex: 1,
-        opacity: 0.85,
-      }}>
-        <img
-          src="/voiture2.png"
-          alt="Toyota HiAce Cleano"
-          style={{
-            width: "100%",
-            height: "auto",
-            objectFit: "contain",
-            filter: "drop-shadow(0 6px 18px rgba(0,0,0,0.3)) brightness(0.9)",
-          }}
-        />
-      </div>
+     {/* Véhicule 3 — Fiat Fiorino */}
+<div className="vehicle3" style={{ width: "80%", zIndex: 3 }}>
+    <img
+         src="/13.png"
+         alt="Fiat Fiorino Cleano"
+         style={{
+           width: "100%",
+           height: "auto",
+           objectFit: "contain",
+           filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.28))",
+         }}
+       />
+     </div>
 
-      {/* Véhicule 2 — premier plan (plus grand) */}
-      <div style={{
-        position: "absolute",
-        bottom: "2%",
-        right: 0,
-        width: "95%",
-        zIndex: 2,
-      }}>
-        <img
-          src="/voiture1.png"
-          alt="Fiat Ducato Cleano"
-          style={{
-            width: "100%",
-            height: "auto",
-            objectFit: "contain",
-            filter: "drop-shadow(0 12px 32px rgba(0,0,0,0.35))",
-          }}
-        />
-      </div>
-
+   </div>
     </div>
   </div>
 
-{/*    */}{/* Bande d'infos en bas */}
-{/*   <div style={{ */}
-{/*     background: "rgba(0,0,0,0.2)", */}
-{/*     borderTop: "1px solid rgba(255,255,255,0.1)", */}
-{/*     padding: "18px 48px", */}
-{/*     display: "grid", */}
-{/*     gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", */}
-{/*     gap: 16, */}
-{/*     position: "relative", */}
-{/*     zIndex: 3, */}
-{/*   }}> */}
-{/*     {[ */}
-{/*       { icon: "M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8", label: "Livraison rapide", val: "24 à 48h" }, */}
-{/*       { icon: "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 10m-3 0a3 3 0 1 0 6 0 3 3 0 0 0-6 0", label: "Zone de livraison", val: "Hammam Sousse & env." }, */}
-{/*       { icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", label: "Emballage soigné", val: "Produits protégés" }, */}
-{/*       { icon: "M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.92 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.99 5.99l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z", label: "Appelez-nous", val: "(+216) 54 444 428" }, */}
-{/*     ].map(({ icon, label, val }) => ( */}
-{/*       <div key={label} style={{ display: "flex", alignItems: "center", gap: 10 }}> */}
-{/*         <div style={{ width: 36, height: 36, borderRadius: 9, flexShrink: 0, background: "rgba(255,255,255,0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}> */}
-{/*           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={C.rose} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"> */}
-{/*             <path d={icon}/> */}
-{/*           </svg> */}
-{/*         </div> */}
-{/*         <div> */}
-{/*           <p style={{ fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: ".08em", fontFamily: FONT, margin: 0 }}>{label}</p> */}
-{/*           <p style={{ fontSize: 12, fontWeight: 700, color: "#fff", fontFamily: FONT, margin: 0 }}>{val}</p> */}
-{/*         </div> */}
-{/*       </div> */}
-{/*     ))} */}
-{/*   </div> */}
 </div>
      </div>
   );

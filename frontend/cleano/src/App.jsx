@@ -1,9 +1,4 @@
-// ============================================================
-// src/App.jsx — Root component
-// La navbar est fixed/floating → pas de margin-top global.
-// La HomePage gère son propre padding-top pour le hero.
-// Les autres pages ont un padding-top via .page-padded.
-// ============================================================
+// src/App.jsx
 import "./styles/global.css";
 import AppRouter      from "./router/AppRouter";
 import Header         from "./views/components/shared/Header";
@@ -13,12 +8,29 @@ import CartDrawer     from "./views/components/cart/CartDrawer";
 import ToastContainer from "./views/components/shared/Toast";
 import useAppStore    from "./store/useAppStore";
 
+const ADMIN_PAGES = [
+  "admin", "admin-produits", "admin-stock", "admin-stock-historique",
+  "admin-gouvernorats", "admin-points-vente",
+  "admin-clients", "admin-commandes", "admin-colis", "admin-historique",
+];
+
 function App() {
   const page = useAppStore((s) => s.page);
-  // La home a son propre hero qui gère le padding (minHeight 100vh + paddingTop 96px)
-  // Les autres pages ont besoin d'un padding-top pour la navbar fixe
-  const needsOffset = page !== "home";
 
+  const isAdmin    = ADMIN_PAGES.includes(page);
+  const needsOffset = !isAdmin && page !== "home";
+
+  // ── Pages admin : rendu isolé, sans Header/Footer/CartDrawer ──
+  if (isAdmin) {
+    return (
+      <>
+        <AppRouter />
+        <ToastContainer />
+      </>
+    );
+  }
+
+  // ── Pages publiques : layout normal ──────────────────────────
   return (
     <>
       <Header />

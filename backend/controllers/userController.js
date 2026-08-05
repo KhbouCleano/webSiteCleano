@@ -1,92 +1,80 @@
-// controllers/userController.js
-const User     = require('../models/User');
-const Address  = require('../models/Address');
-const Favorite = require('../models/Favorite');
+// src/controllers/useAuthController.js
+// Patch : après login, redirige vers /admin si rôle = 'admin'
 
-// ── GET /api/users/profile ─────────────────────────────────
-exports.profile = (req, res) => {
-  return res.json({ user: User.sanitize(req.user) });
-};
+import { useState } from "react";
+import useAppStore  from "../store/useAppStore";
 
-// ── PUT /api/users/profile ─────────────────────────────────
-exports.updateProfile = async (req, res) => {
-  const { first_name, last_name, phone } = req.body;
-  try {
-    const user = await User.updateProfile(req.user.id, { first_name, last_name, phone });
-    return res.json({ user, message: 'Profil mis à jour.' });
-  } catch (err) {
-    console.error('users.updateProfile:', err);
-    return res.status(500).json({ error: 'Erreur serveur.' });
-  }
-};
+export const useAuthController = () => {
+  const { closeAuthModal, setUser, navigate, addToast } = useAppStore();
+  const [loading, setLoading] = useState(false);
+  const [error,   setError]   = useState("");
 
-// ── GET /api/users/addresses ───────────────────────────────
-exports.getAddresses = async (req, res) => {
-  try {
-    const addresses = await Address.findByUser(req.user.id);
-    return res.json({ addresses });
-  } catch (err) {
-    return res.status(500).json({ error: 'Erreur serveur.' });
-  }
-};
+  // ── LOGIN ──────────────────────────────────────────────────
+  const handleLogin = async (email, password) => {
+    setLoading(true);
+    setError("");
+    try {
+      const res  = await fetch("/api/auth/login", {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body:    JSON.stringify({ email, password }),
+      });
+      const data = await res.json();
 
-// ── POST /api/users/addresses ──────────────────────────────
-exports.createAddress = async (req, res) => {
-  try {
-    const address = await Address.create(req.user.id, req.body);
-    return res.status(201).json({ address });
-  } catch (err) {
-    console.error('users.createAddress:', err);
-    return res.status(500).json({ error: 'Erreur serveur.' });
-  }
-};
+      if (!res.ok) {
+        setError(data.message ?? "Identifiants incorrects.");
+        setLoading(false);
+        return;
+      }
 
-// ── DELETE /api/users/addresses/:id ───────────────────────
-exports.deleteAddress = async (req, res) => {
-  try {
-    await Address.delete(req.params.id, req.user.id);
-    return res.json({ message: 'Adresse supprimée.' });
-  } catch (err) {
-    return res.status(500).json({ error: 'Erreur serveur.' });
-  }
-};
+      // Stocker le token JWT
+      if (data.token) localStorage.setItem("token", data.token);
 
-// ── GET /api/users/favorites ───────────────────────────────
-exports.getFavorites = async (req, res) => {
-  try {
-    const favorites = await Favorite.findByUser(req.user.id);
-    return res.json({ favorites });
-  } catch (err) {
-    return res.status(500).json({ error: 'Erreur serveur.' });
-  }
-};
+      // Enregistrer l'utilisateur dans le store (avec son rôle)
+      setUser(data.user);
+      closeAuthModal();
 
-// ── POST /api/users/favorites/:productId ──────────────────
-exports.addFavorite = async (req, res) => {
-  try {
-    await Favorite.add(req.user.id, req.params.productId);
-    return res.json({ message: 'Ajouté aux favoris.' });
-  } catch (err) {
-    return res.status(500).json({ error: 'Erreur serveur.' });
-  }
-};
+      // ✅ Redirection selon le rôle
+      if (data.user.role === "admin") {
+        addToast(`Bienvenue Admin ${data.user.name} 👑`);
+        navigate("admin");           // → ouvre le dashboard admin
+      } else {
+        addToast(`Bienvenue ${data.user.name} !`);
+        // reste sur la page courante pour les clients
+      }
+    } catch (err) {
+      setError("Impossible de joindre le serveur.");
+    }
+    setLoading(false);
+  };
 
-// ── DELETE /api/users/favorites/:productId ────────────────
-exports.removeFavorite = async (req, res) => {
-  try {
-    await Favorite.remove(req.user.id, req.params.productId);
-    return res.json({ message: 'Retiré des favoris.' });
-  } catch (err) {
-    return res.status(500).json({ error: 'Erreur serveur.' });
-  }
-};
+  // ── REGISTER ───────────────────────────────────────────────
+  const handleRegister = async (email, password, name) => {
+    setLoading(true);
+    setError("");
+    try {
+      const res  = await fetch("/api/auth/register", {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body:    JSON.stringify({ name, email, password }),
+      });
+      const data = await res.json();
 
-// ── GET /api/admin/users — Admin ──────────────────────────
-exports.adminIndex = async (req, res) => {
-  try {
-    const users = await User.findAll();
-    return res.json({ users });
-  } catch (err) {
-    return res.status(500).json({ error: 'Erreur serveur.' });
-  }
+      if (!res.ok) {
+        setError(data.message ?? "Erreur lors de l'inscription.");
+        setLoading(false);
+        return;
+      }
+
+      if (data.token) localStorage.setItem("token", data.token);
+      setUser(data.user);   // rôle toujours 'client' à l'inscription
+      closeAuthModal();
+      addToast(`Compte créé ! Bienvenue ${data.user.name} 🎉`);
+    } catch (err) {
+      setError("Impossible de joindre le serveur.");
+    }
+    setLoading(false);
+  };
+
+  return { handleLogin, handleRegister, loading, error, setError };
 };
