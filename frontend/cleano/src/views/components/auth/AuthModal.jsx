@@ -56,6 +56,7 @@ const Input = ({ label, type = "text", value, onChange, placeholder, icon }) => 
         }}
       />
     </div>
+<<<<<<< HEAD
   </div>
 );
 
@@ -91,6 +92,8 @@ const AccountTypeSwitch = ({ value, onChange }) => (
         </button>
       ))}
     </div>
+=======
+>>>>>>> frontend
   </div>
 );
 
@@ -103,11 +106,14 @@ const AuthModal = () => {
   const [password, setPassword] = useState("");
   const [name, setName]         = useState("");
   const [showPass, setShowPass] = useState(false);
+<<<<<<< HEAD
 
   // Nouveaux champs liés au type de compte
   const [accountType, setAccountType]     = useState("particulier"); // "particulier" | "grossiste"
   const [companyName, setCompanyName]     = useState("");
   const [estimatedVolume, setEstimatedVolume] = useState("");
+=======
+>>>>>>> frontend
 
   if (!authModal) return null;
 
@@ -147,8 +153,11 @@ const AuthModal = () => {
         overflow: "hidden",
         boxShadow: "0 24px 64px rgba(27,37,89,0.18), 0 4px 16px rgba(0,0,0,0.08)",
         animation: "scaleIn .25s ease both",
+<<<<<<< HEAD
         maxHeight: "90vh",
         overflowY: "auto",
+=======
+>>>>>>> frontend
       }}>
 
         {/* Bandeau dégradé haut */}
@@ -158,9 +167,17 @@ const AuthModal = () => {
           position: "relative",
           overflow: "hidden",
         }}>
+<<<<<<< HEAD
           <div style={{ position: "absolute", top: -30, right: -30, width: 120, height: 120, borderRadius: "50%", background: "rgba(255,255,255,0.06)", pointerEvents: "none" }} />
           <div style={{ position: "absolute", bottom: -20, left: 60, width: 80, height: 80, borderRadius: "50%", background: "rgba(255,255,255,0.04)", pointerEvents: "none" }} />
 
+=======
+          {/* Décos */}
+          <div style={{ position: "absolute", top: -30, right: -30, width: 120, height: 120, borderRadius: "50%", background: "rgba(255,255,255,0.06)", pointerEvents: "none" }} />
+          <div style={{ position: "absolute", bottom: -20, left: 60, width: 80, height: 80, borderRadius: "50%", background: "rgba(255,255,255,0.04)", pointerEvents: "none" }} />
+
+          {/* Logo Cleano */}
+>>>>>>> frontend
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
             <div>
              <div style={{ marginBottom: 14 }}>
@@ -189,6 +206,10 @@ const AuthModal = () => {
               </p>
             </div>
 
+<<<<<<< HEAD
+=======
+            {/* Bouton fermer */}
+>>>>>>> frontend
             <button onClick={closeAuthModal} style={{
               width: 34, height: 34, borderRadius: 10, flexShrink: 0,
               background: "rgba(255,255,255,0.15)",
@@ -234,6 +255,7 @@ const AuthModal = () => {
           <form onSubmit={submit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
 
             {authTab === "register" && (
+<<<<<<< HEAD
               <>
                 <AccountTypeSwitch value={accountType} onChange={setAccountType} />
 
@@ -282,6 +304,20 @@ const AuthModal = () => {
                   </>
                 )}
               </>
+=======
+              <Input
+                label="Nom complet"
+                value={name}
+                onChange={setName}
+                placeholder="Jean Dupont"
+                icon={
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                  </svg>
+                }
+              />
+>>>>>>> frontend
             )}
 
             <Input
@@ -352,6 +388,10 @@ const AuthModal = () => {
               </div>
             </div>
 
+<<<<<<< HEAD
+=======
+            {/* Lien mot de passe oublié */}
+>>>>>>> frontend
             {authTab === "login" && (
               <div style={{ textAlign: "right", marginTop: -8 }}>
                 <button type="button" style={{
@@ -363,6 +403,10 @@ const AuthModal = () => {
               </div>
             )}
 
+<<<<<<< HEAD
+=======
+            {/* Erreur */}
+>>>>>>> frontend
             {error && (
               <div style={{
                 display: "flex", alignItems: "center", gap: 10,
@@ -381,6 +425,10 @@ const AuthModal = () => {
               </div>
             )}
 
+<<<<<<< HEAD
+=======
+            {/* Bouton submit */}
+>>>>>>> frontend
             <button
               type="submit"
               disabled={loading}
@@ -429,12 +477,20 @@ const AuthModal = () => {
               )}
             </button>
 
+<<<<<<< HEAD
+=======
+            {/* Séparateur */}
+>>>>>>> frontend
             <div style={{ display: "flex", alignItems: "center", gap: 12, margin: "4px 0" }}>
               <div style={{ flex: 1, height: 1, background: C.lavender }} />
               <span style={{ fontSize: 12, color: C.muted, fontFamily: FONT }}>ou</span>
               <div style={{ flex: 1, height: 1, background: C.lavender }} />
             </div>
 
+<<<<<<< HEAD
+=======
+            {/* Lien switcher */}
+>>>>>>> frontend
             <p style={{ textAlign: "center", fontSize: 13, color: C.muted, fontFamily: FONT, margin: 0 }}>
               {authTab === "login" ? "Pas encore de compte ? " : "Déjà un compte ? "}
               <button

@@ -1,7 +1,11 @@
 // ============================================================
 // src/views/pages/HomePage.jsx — Responsive mobile
 // ============================================================
+<<<<<<< HEAD
 import { useRef, useState, useEffect } from "react";
+=======
+import { useRef, useState } from "react";
+>>>>>>> frontend
 import { motion, useScroll, useTransform } from "framer-motion";
 import { CATEGORIES } from "../../models/Category";
 import useAppStore from "../../store/useAppStore";
@@ -258,10 +262,13 @@ const MOBILE_CSS = `
     .hero-section     { min-height: 32vh !important; max-height: 32vh !important; height: 50vh !important; padding-top: 0 !important; }
     .cat-grid-custom  { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
     .cat-img-zone     { height: 110px !important; }
+<<<<<<< HEAD
 
     /* ── Section produits : bouton "Tout voir" minimisé ── */
     .tout-voir-btn    { padding: 5px 12px !important; font-size: 10px !important; border-width: 1px !important; }
     .products-section-inner-header { margin-bottom: 14px !important; }
+=======
+>>>>>>> frontend
   }
   @media (max-width: 375px) {
     .hero-ctas        { padding: 0 12px !important; gap: 6px !important; }
@@ -303,6 +310,10 @@ const HeroSection = ({ navigate }) => {
       </video>
       <div style={{
         position: "absolute", inset: 0,
+<<<<<<< HEAD
+=======
+//         background: "linear-gradient(160deg, rgba(39,47,103,.50) 0%, rgba(0,0,0,.30) 50%, rgba(231,57,139,.28) 100%)",
+>>>>>>> frontend
         zIndex: 1, pointerEvents: "none",
       }} />
       <motion.div style={{ y: parallaxY, opacity: heroOpacity, position: "relative", zIndex: 2, width: "100%" }}>
@@ -329,6 +340,20 @@ const HeroSection = ({ navigate }) => {
       </svg>
     </section>
   );
+};
+const CAT_OVERLAYS = {
+  cuisine:     { from: "rgba(255,152,0,0.72)",   to: "rgba(255,193,7,0.45)",   label: "#fff" },
+  sanitaire:   { from: "rgba(67,160,71,0.72)",   to: "rgba(129,199,132,0.45)", label: "#fff" },
+  vitres:      { from: "rgba(30,136,229,0.72)",  to: "rgba(100,181,246,0.45)", label: "#fff" },
+  sols:        { from: "rgba(97,97,97,0.75)",    to: "rgba(189,189,189,0.45)", label: "#fff" },
+auto: {
+  from: "rgba(255,255,255,0.78)",
+  to: "rgba(240,240,240,0.42)",
+  label: "rgba(39,47,103,1)",
+  subColor: "rgba(39,47,103,1)",
+  titleColor: "rgba(39,47,103,1)",  // ← ajoute ça
+},
+desinfection:{ from: "rgba(233,30,99,0.72)",   to: "rgba(248,187,208,0.45)", label: "#fff" },
 };
 
 // ── Section Produits (extrait juste après le hero) ────────────
@@ -563,6 +588,7 @@ const CategoryCard = ({ cat, index, navigate }) => {
           alt={cat.label}
           animate={{ scale: hovered ? 1.08 : 1 }}
           transition={{ duration: 0.45, ease: "easeOut" }}
+<<<<<<< HEAD
           style={{
             width: "100%", height: "100%",
             objectFit: "cover", objectPosition: "center",
@@ -706,6 +732,158 @@ const CategoryCard = ({ cat, index, navigate }) => {
           transformOrigin: "left",
         }}
       />
+=======
+          style={{
+            width: "100%", height: "100%",
+            objectFit: "cover", objectPosition: "center",
+            display: "block",
+          }}
+        />
+
+        {/* ── Overlay couleur PERMANENT (toujours visible) ── */}
+        <div style={{
+          position: "absolute", inset: 0,
+          background: `linear-gradient(
+            160deg,
+            ${overlay.from} 0%,
+            ${overlay.to}   55%,
+            rgba(0,0,0,0.10) 100%
+          )`,
+          zIndex: 2,
+          transition: "opacity 0.35s ease",
+          opacity: hovered ? 0.75 : 0.88,
+        }} />
+
+        {/* ── Texte centré sur l'image (comme le hero) ── */}
+{/* ── Texte centré sur l'image ── */}
+<div style={{
+  position: "absolute", inset: 0,
+  zIndex: 3,
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "12px",
+}}>
+  {/* Titre centré */}
+{/* Titre centré */}
+<motion.span
+  animate={{ y: hovered ? -4 : 0, scale: hovered ? 1.05 : 1 }}
+  transition={{ duration: 0.25 }}
+  style={{
+    color: overlay.titleColor || overlay.label,  // ← subColor pour auto, label pour les autres
+    fontSize: 17,
+    fontWeight: 700,
+    fontFamily: "'Raleway', system-ui, sans-serif",
+    textShadow: "0 2px 8px rgba(0,0,0,0.22)",
+    letterSpacing: ".02em",
+    textAlign: "center",
+    display: "block",
+  }}
+>
+  {cat.label}
+</motion.span>
+
+  {/* Sous-titre sur l'image */}
+  <motion.span
+    animate={{ opacity: hovered ? 1 : 0.7, y: hovered ? 2 : 0 }}
+    transition={{ duration: 0.25 }}
+    style={{
+color: overlay.subColor || overlay.from.replace(/[\d.]+\)$/, "1)"),
+      fontSize: 10,
+      fontWeight: 500,
+      fontFamily: "'Rubik', system-ui, sans-serif",    // ← Rubik
+      marginTop: 4,
+      textAlign: "center",
+      textShadow: "0 1px 4px rgba(0,0,0,0.18)",
+      background: "rgba(255,255,255,0.18)",
+      borderRadius: 20,
+      padding: "2px 8px",
+    }}
+  >
+    {cat.sub}
+  </motion.span>
+
+  {/* Bouton "Voir" au hover */}
+  <motion.div
+    animate={{ opacity: hovered ? 1 : 0, y: hovered ? 6 : 14 }}
+    transition={{ duration: 0.25, delay: hovered ? 0.05 : 0 }}
+    style={{
+      marginTop: 10,
+      padding: "5px 14px",
+      borderRadius: 50,
+      background: "rgba(255,255,255,0.22)",
+      border: `1px solid ${overlay.label}88`,
+      backdropFilter: "blur(6px)",
+      color: overlay.label,
+      fontSize: 10,
+      fontWeight: 600,
+      fontFamily: "'Rubik', system-ui, sans-serif",    // ← Rubik
+      letterSpacing: ".04em",
+      display: "flex", alignItems: "center", gap: 4,
+    }}
+  >
+    Voir les produits
+    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+    </svg>
+  </motion.div>
+</div>
+
+        {/* Point décoratif */}
+        <div style={{
+          position: "absolute", top: 10, right: 10,
+          width: 7, height: 7, borderRadius: "50%",
+          background: overlay.label,
+          opacity: 0.7,
+          zIndex: 4,
+        }} />
+      </div>
+
+      {/* ── Bas de carte ── */}
+{/* ── Bas de carte ── */}
+<motion.div
+  animate={{ background: hovered ? `${cat.accent}0D` : "#fff" }}
+  transition={{ duration: 0.3 }}
+  style={{ padding: "12px 16px 14px", borderTop: `2px solid ${overlay.from}` }}
+>
+<motion.div
+  transition={{ duration: 0.25 }}
+  style={{
+    fontSize: 13,
+    fontWeight: 700,
+    fontFamily: "'Raleway', system-ui, sans-serif",
+    marginBottom: 3,
+    color: overlay.subColor || overlay.from.replace(/[\d.]+\)$/, "1)"),  // ← subColor en priorité
+  }}
+>
+  {cat.label}
+</motion.div>
+
+  {/* Sous-titre bas — même police Rubik + couleur overlay */}
+  <div style={{
+    fontSize: 11,
+color: overlay.subColor || overlay.from.replace(/[\d.]+\)$/, "1)"),
+    fontFamily: "'Rubik', system-ui, sans-serif",      // ← Rubik
+    fontWeight: 400,
+    lineHeight: 1.4,
+  }}>
+    {cat.sub}
+  </div>
+</motion.div>
+
+ {/* Barre bas */}
+        <motion.div
+          animate={{ scaleX: hovered ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+          style={{
+            position: "absolute", bottom: 0, left: 0, right: 0,
+            height: 3,
+            background: `linear-gradient(90deg, ${overlay.from}, ${overlay.to})`,  // ← dégradé overlay
+            transformOrigin: "left",
+          }}
+        />
+>>>>>>> frontend
     </motion.button>
   );
 };
@@ -729,7 +907,10 @@ const HomePage = () => {
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 32 ,}}>
             <SectionTitle  title="Nos catégories"   noMargin />
             <motion.button
+<<<<<<< HEAD
               className="tout-voir-btn"
+=======
+>>>>>>> frontend
               onClick={() => navigate("products")}
               style={{ background: "none", border: `1.5px solid ${C.navy}`, color: C.navy, cursor: "pointer", padding: "8px 18px", borderRadius: 50, fontSize: 12, fontWeight: 600, fontFamily: "'Poppins', sans-serif", whiteSpace: "nowrap", flexShrink: 0 }}
               whileHover={{ background: C.navy, color: "#fff" }}>
@@ -770,7 +951,11 @@ const SectionTitle = ({ title, sub }) => (
     }}>{title}</h2>
     {sub && <p style={{
       fontFamily: "'Rubik', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+<<<<<<< HEAD
       color: C.magenta,
+=======
+      color: C.magenta,   // ← couleur changée
+>>>>>>> frontend
       fontSize: 14,
       fontWeight: 400,
     }}>{sub}</p>}
