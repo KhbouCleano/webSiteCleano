@@ -8,6 +8,11 @@ const C = {
   lavender: "#E8EAF6", muted: "#8892B0", white: "#FFFFFF", offwhite: "#F8F9FF",
 };
 
+// ✅ Référence stable — évite de recréer un nouveau tableau à chaque rendu
+// (sinon le sélecteur Zustand `s.notifications || []` renvoie une nouvelle
+// référence à chaque appel et provoque une boucle infinie de re-render)
+const EMPTY_ARR = [];
+
 // ── SVG Icons ─────────────────────────────────────────────────
 const Icon = ({ children, size = 22, color = "currentColor" }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
@@ -206,7 +211,8 @@ export default function AdminDashboard() {
   const [stats, setStats] = useState(STATS);
 
   // ── Notifications ────────────────────────────────────────────
-  const notifications            = useAppStore((s) => s.notifications || []);
+  // ✅ EMPTY_ARR (référence stable) au lieu de `|| []` (nouvelle référence à chaque rendu)
+  const notifications            = useAppStore((s) => s.notifications ?? EMPTY_ARR);
   const unreadCount               = notifications.filter((n) => !n.read).length;
   const markAllNotificationsRead  = useAppStore((s) => s.markAllNotificationsRead);
   const markNotificationRead      = useAppStore((s) => s.markNotificationRead);

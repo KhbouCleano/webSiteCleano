@@ -3,7 +3,6 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { addToCart, removeFromCart, updateQty } from "../models/Cart";
 
-<<<<<<< HEAD
 const PAGE_URLS = {
   home:              "/",
   products:          "/products",
@@ -25,23 +24,9 @@ const PAGE_URLS = {
   "admin-colis":     "/admin/colis",
   "admin-historique":"/admin/historique",
   "admin-stock-historique":"/admin/stock-historique"
-=======
-// Map page → URL
-const PAGE_URLS = {
-  home:      "/",
-  products:  "/products",
-  detail:    "/product",   // + /:id
-  cart:      "/cart",
-  checkout:  "/checkout",  // ✅ Assurez-vous que c'est bien présent
-  track:     "/track",
-  favorites: "/favorites",
-  about:     "/about",
-  contact:   "/contact",
->>>>>>> frontend
 };
 
 const URL_PAGES = {
-<<<<<<< HEAD
   "/":                  "home",
   "/products":          "products",
   "/cart":              "cart",
@@ -60,16 +45,6 @@ const URL_PAGES = {
   "/admin/commandes":   "admin-commandes",
   "/admin/colis":       "admin-colis",
   "/admin/historique":  "admin-historique",
-=======
-  "/":           "home",
-  "/products":   "products",
-  "/cart":       "cart",
-  "/checkout":   "checkout",  // ✅ Ajoutez cette ligne
-  "/track":      "track",
-  "/favorites":  "favorites",
-  "/about":      "about",
-  "/contact":    "contact",
->>>>>>> frontend
 };
 
 const useAppStore = create(
@@ -79,7 +54,6 @@ const useAppStore = create(
       page: "home",
       selectedProductId: null,
 
-<<<<<<< HEAD
       // ✅ "detail" ET "checkout" incluent maintenant l'ID produit dans l'URL,
       // ex: /product/12 ou /checkout/12
       navigate: (page, productId = null) => {
@@ -87,27 +61,15 @@ const useAppStore = create(
         const url = PAGE_URLS[page] ?? "/";
         const needsId = (page === "detail" || page === "checkout") && productId;
         const fullUrl = needsId ? `${url}/${productId}` : url;
-=======
-      navigate: (page, productId = null) => {
-        set({ page, selectedProductId: productId });
-        // Change l'URL dans le navigateur
-        const url = PAGE_URLS[page] ?? "/";
-        const fullUrl = page === "detail" && productId ? `${url}/${productId}` : url;
->>>>>>> frontend
         window.history.pushState({}, "", fullUrl);
       },
 
       setPageFromUrl: (pathname) => {
-<<<<<<< HEAD
-=======
-        // Gestion spéciale pour /product/:id
->>>>>>> frontend
         if (pathname.startsWith("/product/")) {
           const id = pathname.split("/")[2];
           set({ page: "detail", selectedProductId: id });
           return;
         }
-<<<<<<< HEAD
         // ✅ Reconnaît /checkout/:id et restaure le produit sélectionné
         // (utile en cas de rafraîchissement de page ou d'accès direct au lien)
         if (pathname.startsWith("/checkout/")) {
@@ -115,8 +77,6 @@ const useAppStore = create(
           set({ page: "checkout", selectedProductId: id });
           return;
         }
-=======
->>>>>>> frontend
         const page = URL_PAGES[pathname] ?? "home";
         set({ page });
       },
@@ -214,7 +174,6 @@ const useAppStore = create(
   )
 );
 
-<<<<<<< HEAD
 // ✅ Add selectors to prevent unnecessary re-renders
 export const useCartItems = () => useAppStore((state) => state.cartItems || []);
 export const useFavorites = () => useAppStore((state) => state.favorites || []);
@@ -229,6 +188,4 @@ export const useCartTotal = () => {
   return cartItems.reduce((sum, item) => sum + (parseFloat(item.price) || 0) * (item.quantity || 1), 0);
 };
 
-=======
->>>>>>> frontend
 export default useAppStore;

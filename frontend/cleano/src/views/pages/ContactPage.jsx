@@ -56,33 +56,20 @@ const IconRefresh = () => (
     <path d="M3.51 15a9 9 0 1 0 .49-5"/>
   </svg>
 );
-<<<<<<< HEAD
-=======
-
->>>>>>> frontend
 const CONTACTS = [
   {
     Icon: IconPin,
     title: "Adresse",
     lines: [
-<<<<<<< HEAD
       { text: "طريق الشاطئ الطابق الأول 4011 حمام سوسة", bold: true,  color: "#fff" },
       { text: "سوسة، تونس",   bold: false, color: "rgba(255,255,255,0.70)" },
-=======
-      { text: "12 Rue de la Propreté", bold: true,  color: "#fff" },
-      { text: "75001 Paris, France",   bold: false, color: "rgba(255,255,255,0.70)" },
->>>>>>> frontend
     ],
   },
   {
     Icon: IconPhone,
     title: "Téléphone",
     lines: [
-<<<<<<< HEAD
       { text: "+216 70 248 170", bold: true, color: "#fff" },
-=======
-      { text: "+33 1 23 45 67 89", bold: true, color: "#fff" },
->>>>>>> frontend
       { text: "Lun–Ven, 9h–18h",   bold: true, color: C.rose },
     ],
   },
@@ -90,13 +77,8 @@ const CONTACTS = [
     Icon: IconMail,
     title: "Email",
     lines: [
-<<<<<<< HEAD
       { text: "contact@registre-entreprises.tn", bold: true,  color: "#fff" },
       { text: "Identifiant: 1741070V", bold: false, color: "rgba(255,255,255,0.70)" },
-=======
-      { text: "bonjour@cleano.fr", bold: true,  color: "#fff" },
-      { text: "support@cleano.fr", bold: false, color: "rgba(255,255,255,0.70)" },
->>>>>>> frontend
     ],
   },
   {
@@ -108,10 +90,6 @@ const CONTACTS = [
     ],
   },
 ];
-<<<<<<< HEAD
-=======
-
->>>>>>> frontend
 const Field = ({ label, type = "text", value, onChange, placeholder }) => (
   <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
     <label style={{ fontSize: 12, fontWeight: 700, color: C.muted, fontFamily: FONT, letterSpacing: ".06em", textTransform: "uppercase" }}>{label}</label>
@@ -376,13 +354,8 @@ const ContactPage = () => {
                   </h2>
                 </div>
                 <div className="form-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
-<<<<<<< HEAD
                   <Field label="Nom" value={form.name} onChange={update("name")} placeholder="KbouClean" />
                   <Field label="Email" type="email" value={form.email} onChange={update("email")} placeholder="KbouClean@email.fr" />
-=======
-                  <Field label="Nom" value={form.name} onChange={update("name")} placeholder="Jean Dupont" />
-                  <Field label="Email" type="email" value={form.email} onChange={update("email")} placeholder="jean@email.fr" />
->>>>>>> frontend
                 </div>
                 <Field label="Sujet" value={form.subject} onChange={update("subject")} placeholder="Mon sujet…" />
                 <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
